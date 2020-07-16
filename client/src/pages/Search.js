@@ -1,12 +1,16 @@
 import React from 'react';
 import SearchBar from "../components/SearchBar";
+import CardList from "../components/CardList";
 
 class Search extends React.Component {
 
   render() {
     return (
-      <SearchBar />
-    )
+      <div>
+        <SearchBar />
+        <CardList />
+      </div>
+    ) 
   }
 }
 
