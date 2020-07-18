@@ -1,15 +1,19 @@
 import React from 'react';
 
-function Card() {
+function Card(props) {
   return (
     <div className="card horizontal">
       <div className="card-image">
-        <img src="https://lorempixel.com/200/200/nature/6" alt="lorem"/>
+        <img src={props.image} alt={props.title}/>
       </div>
       <div className="card-stacked">
         <div className="card-content">
-          <span className="card-title">Book Title</span>
-          <p>I am a very simple card. I am good at containing small bits of information.</p>
+          <span className="card-title">{props.title}</span>
+          <p>Author: {props.author}</p>
+          <br />
+          <p>{props.description}</p>
+          <br />
+          <a href={props.link}>Go to book</a>
           <a href="/" className="btn waves-effect waves-green teal right bottom"><i className="material-icons">save</i></a>
           </div>
       </div>
@@ -17,9 +21,18 @@ function Card() {
   )
 }
 
-function CardList() {
+function CardList(props) {
   return (
-    <Card />
+    <div className="cardGroup">
+      {props.books.map(book => <Card
+        key={book._id.toString()}
+        title={book.title}
+        author={book.authors}
+        description={book.description}
+        image={book.image}
+        link={book.link}
+      />)}
+    </div>
   )
 }
 
